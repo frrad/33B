@@ -1,0 +1,70 @@
+\documentclass[11pt]{article} 
+
+
+
+\makeatletter
+\renewcommand\section{\@startsection{section}{1}{\z@}%
+                                  {-3.5ex \@plus -1ex \@minus -.2ex}%
+                                  {2.3ex \@plus.2ex}%
+                                  {\normalfont\large\bfseries}}
+\makeatother
+
+\addtolength{\oddsidemargin}{-.875in}
+\addtolength{\evensidemargin}{-.875in}
+\addtolength{\textwidth}{1.75in}
+\addtolength{\topmargin}{-.875in}
+\addtolength{\textheight}{1.75in}
+
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{graphicx,caption,subcaption}
+
+
+\usepackage{titling}
+\setlength{\droptitle}{-6em}
+\posttitle{\par\end{center}\vspace{-4.8em}}
+
+\newcommand{\R}{{\ensuremath{\mathbb{R}}} }
+\newcommand{\Q}{{\ensuremath{\mathbb{Q}}} }
+\newcommand{\C}{{\ensuremath{\mathbb{C}}} }
+\newcommand{\N}{{\ensuremath{\mathbb{N}}} }
+\newcommand{\Z}{{\ensuremath{\mathbb{Z}}} }
+
+\newcommand{\sexion}{\addtocounter{section}{1} }
+
+
+\newcommand{\hint}[1]{{(\emph{Hint:} #1)}} %This line shows hints
+%\newcommand{\hint}[1]{} %Use this line to hide all hints
+
+
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}
+\renewcommand{\headrulewidth}{0pt}
+
+\begin{document}
+
+%\lhead{}
+\rhead{Forced Harmonic Motion}
+\section{Problem}
+\[ x'' + 4 x' + 5 x = \tan x\]
+
+\section{Solution}
+
+First we need to find two linearly independent solutions to the associated homogeneous equation
+\[x'' + 4 x' + 5 x =0 \quad\rightarrow\quad \lambda^2 + 4 \lambda + 5 =0 \Rightarrow \lambda = \frac{-4 \pm \sqrt{4^2 -4 \cdot 5}}{2} = -2 \pm i\]
+So we have $x_1(t) = e^{-2 t} \cos{t}$ and $x_1(t) = e^{-2 t} \sin{t}$.
+
+Now we need a particular solution $x_p(t)$ to the original equation. Since $g(t) = \tan x$ we can't use undetermined coefficient, and are forced to use variation of parameter.
+
+So let's compute the Wronskian,
+\begin{align*} W &= \left| \begin{array}{cc}  e^{-2 t} \cos{t} & e^{-2 t} \sin{t} \\ -2 e^{-2 t} \cos{t}-e^{-2 t} \sin{t} &  e^{-2 t} \cos{t}-2 e^{-2 t} \sin{t} \end{array}\right| \\ &= e^{-4 t} \left( \cos{t}(\cos{t} - 2 \sin{t}) - \sin{t} (-2 \cos{t} -  \sin{t}) \right) \\ &= e^{-4t}   \end{align*}
+
+Now recall that variation of parameter tells us that $x_p = v_1(t) x_1(t) + v_2(t) x_2(t)$ for
+\[v'_2 = \frac{x_1 \cdot g}{W} \quad v'_1 = - \frac{x_2 \cdot g }{W}\]
+so all that remains is to compute 
+\begin{align*} v_2 &= \int  \frac{x_1 \cdot g}{W}\\ &= \int \frac{e^{-2t} \cos t\cdot \tan t}{e^{-4t}} \\ &= \int e^{2t} \sin t \end{align*}
+Recall
+\[ \sin t = \frac{ e^{i t} - e^{-i t}}{2 i} \quad \cos t = \frac{e^{it} + e^{-it} }{2} \quad \tan t = -\frac{i \left(-1+e^{2 i t}\right)}{1+e^{2 i t}} \]
+\end{document}
