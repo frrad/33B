@@ -6,12 +6,15 @@
 \author{Frederick Robinson}
 
 \newtheorem{defn}{Definition}
+\newtheorem{re}{Recipe}
 \newtheorem{ex}{Example}
+
+\newcommand{\type}[1]{\begin{center} \emph{\textbf{#1}} \end{center}}
 
 \begin{document}
 
 \maketitle
-
+\tableofcontents
 \pagebreak
 
 Frederick Robinson
@@ -53,7 +56,7 @@ solutions are exactly those equations of the form $x = 3t + C$. We call this the
 Often we're interested in one particular solution to a differential equation which satisfies
 constraints of the form $y^{(n)}(t) = y_0$. We call these constraints \emph{initial
   conditions}. This sort of problem is called an \emph{initial value problem}. It takes $n$
-conditions to fully specify a particular solution to a differential equation of order $n$.
+conditions to fully specify a \emph{particular solution} to a differential equation of order $n$.
 
 Suppose in our example above that in addition to the differential equation $x'=3$ we had specified
 that $x(5) = 4$, then we could find a particular solution by first finding the general solution $x =
@@ -107,7 +110,7 @@ solution $x = 3t$ exists, and satisfies the given differential equation for all 
 
 
 \begin{defn}[Normal form]
-  A differential equation is said to be in \emph{normal form} if it is of the form $y' = f(y,t)$.
+  An order $n$ differential equation is said to be in \emph{normal form} if it is of the form $y^{(n)} = f(y^{(n-1)}, y^{(n-2)}, \dots, y',y,t)$.
 \end{defn}
 
 Given a first order ODE in normal form $y' = f(y,t)$ we can draw a vector field describing solutions
@@ -115,14 +118,14 @@ by drawing small lines of slope $f(y,t)$ at some collection of points $(y,t)$.
 
 \subsubsection*{Examples}
 
-\emph{Check}
+\type{Check}
 \begin{ex}[Exercise 2.1.3] Check that $y' = -ty$ is solved by $y = C e ^{-(1/2) t^2}$\end{ex}
 
 Just differentiate and compare:
 \[y' = -t C e^{-(1/2) t^2} = -t y\]
 so it is a solution to the differential equation.
 
-\emph{Interval of Existence}
+\type{Interval of Existence}
 \begin{ex}[Exercise 2.1.13] Find the interval of existence for the differential equation $y' =
   \frac{2}{3} t - \frac{5}{3 t^2}  $ satisfying initial condition $y(1) = 2$ \end{ex}
 
@@ -142,15 +145,94 @@ Now that we have the solution it's easy to determine interval of existence. Ther
 $t=0$, so that is the lower end of the interval. The function is continuous as $t \to \infty$, so
 there is no upper limit. Interval of existence is therefore $(0,\infty)$.
 
-\emph{Normal Form}
+\type{Normal Form}
 \begin{ex}[Exercise 2.1.1] Put $\phi(t,y,y') = t^2 y' + (1+t) y = 0$ in normal form. \end{ex}
 Just solve for $y'$: 
 \[y' = - \frac{y(1+t)}{t^2} \]
 
 
-\emph{Vector Field}
+\type{Vector Field}
 \begin{ex}[Exercise 2.1.17] Draw vector field for $y' = y+ t$. \end{ex}
-\includegraphics{{2.1}.pdf}
+\includegraphics{figures/{2.1.17}.pdf}
+
+
+\begin{ex}[Exercise 2.1.19] Draw vector field for $y' = t \tan{y/2}$. \end{ex}
+\includegraphics{figures/{2.1.19}.pdf}
+
+\subsection{Section 2 - Separation of Variables}
+
+\subsubsection*{Examples}
+
+\begin{ex}[2.2.5] Find the general solution for $y' = y(x+1)$. \end{ex}
+
+\[y = C e^{1/2 x^ 2 + x }\]
+
+\begin{ex}[2.2.13] Find the exact solution to the IVP. Indicate interval of existence $ \frac{dy}{dx} = y/x$; $y(1) = -2$. \end{ex}
+
+$y = -2x$, $x \in (0, \infty)$ since DE undefined at $x = 0$.
+
+
+\begin{ex}[2.2.15] Find the exact solution to the IVP. Indicate interval of existence $ \frac{dy}{dx} = \frac{\sin x}{y}$; $y(\pi / 2 ) = 1$.\end{ex}
+
+\begin{align*}
+ydy &= \sin x dx \\
+1/2 y^2 &= -\cos x + C \\
+y^2 &= -2 \cos x + C \\
+y &= \pm \sqrt{-2 \cos x + C } \\ 
+\end{align*}
+
+initial condition means that 
+\[y(\pi /2 )  = 1 = \sqrt{-2 \cos \pi / 2 + C}\]
+so $C =1$ and the solution is 
+\[y = \sqrt{1 - 2 \cos x}.\]
+The interval of existence is 
+\[2 \cos x < 1 \Leftrightarrow \pi / 3 < x < 5 \pi /3 .\]
+There is no equality because original equation is undefined.
+
+\subsection{Section 4 - Linear Equations}
+
+\begin{defn}[Linear Homogeneous] A \emph{linear homogeneous} differential equation is one of the form \[x'(t) = a(t) x(t) \] for some function $a(t)$. \end{defn}
+
+We can solve these by separation of variables:
+\begin{align*} 
+\frac{1}{x} dx &= a(t) dt \\ 
+\ln x &= \int a(t) dt + C \\
+x &= C e^{\int a(t) dt}
+\end{align*}
+
+\begin{defn}[Linear Inhomogeneous] A \emph{linear inhomogeneous} differential equation is one of the form \[x'(t) = f(t) x(t) + g(t) \] for some functions $f(t), g(t)$. \end{defn}
+
+We have two main techniques for solving these: Integrating Factor, and Variation of Parameter.
+
+\begin{re} Integrating Factor:
+\begin{enumerate} 
+\item Write $x' - ax = f$.
+\item Multiply by $u(t) = e^{- \int a(t) dt}$ to get $ (u x)' = uf $.
+\item Integrate to get $u(t) x(t) = \int u(t) f(t) dt + C $.
+\item Solve for $x$.
+\end{enumerate}
+\end{re}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 \end{document}
