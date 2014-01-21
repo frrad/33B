@@ -152,12 +152,22 @@ Just solve for $y'$:
 
 
 \type{Vector Field}
+\begin{samepage}
 \begin{ex}[Exercise 2.1.17] Draw vector field for $y' = y+ t$. \end{ex}
-\includegraphics{figures/{2.1.17}.pdf}
+\[\includegraphics[scale=.7]{figures/{2.1.17}.pdf}\]
+\end{samepage}
 
-
+\begin{samepage}
 \begin{ex}[Exercise 2.1.19] Draw vector field for $y' = t \tan{y/2}$. \end{ex}
-\includegraphics{figures/{2.1.19}.pdf}
+\[\includegraphics[scale=.7]{figures/{2.1.19}.pdf}\]
+\end{samepage}
+
+\pagebreak
+
+\begin{samepage}
+\begin{ex}[Exercise 2.1.19] Draw vector field for $y' = \frac{x+y}{x-y}$. \end{ex}
+\[\includegraphics[scale=.7]{figures/{2.1.extra}.pdf}\]
+\end{samepage}
 
 \subsection{Section 2 - Separation of Variables}
 
@@ -209,19 +219,43 @@ We have two main techniques for solving these: Integrating Factor, and Variation
 \item Write $x' - ax = f$.
 \item Multiply by $u(t) = e^{- \int a(t) dt}$ to get $ (u x)' = uf $.
 \item Integrate to get $u(t) x(t) = \int u(t) f(t) dt + C $.
-\item Solve for $x$.
+\item Solve for $x$. 
 \end{enumerate}
 \end{re}
 
+\begin{re} Variation of Parameter:
+\begin{enumerate}
+\item Put $y' = a y + f $, and solve  associated homogeneous equation $ y'_{hom} = a y_{hom}$.
+\item Substitute guess $y = v(t) y_{hom}$ into original equation and solve for $v$. 
+\item Write general solution $y = v(t) y_{hom}$.
+\end{enumerate}
+\end{re}
 
+\subsubsection*{Examples}
 
+\type{Variation of Parameter}
 
+\begin{ex} Solve $y' -2 y = t^2 e^{2 t  }$ by variation of paramenter.\end{ex}
 
+First solve the associated homogeneous: $y'_{hom} = 2 y_{hom}$.
+\begin{align*} \frac{1}{y} dy &= 2 dt \\
+ln y &= 2 t + C \\
+y_{hom} &= C e^{2t}
+\end{align*}
 
+Now we `guess' $ y = v(t) y_{hom}$. Since $y' = v' y_{hom} + v y'_{hom} = v' e^{2t} + 2  v e^{2t}$ we have:
+\[v' e^{2t} + 2  v e^{2t} - 2(v e^{2t}) = t^2 e^{2t} \Rightarrow v' = t^2 \Rightarrow v = \frac{1}{3} t^3 + C\]
+Therefore, $y = e^{2t} \left( \frac{1}{3} t^3 + C \right)$.
 
+\type{Integrating Factor}
 
+\begin{ex} Solve $y' -2 y = t^2 e^{2 t  }$ by integrating factor.\end{ex}
 
+Since this is already in the `right' form, we can immediately compute the integrating factor
+\[u = e^{-\int2 dt } = e^{-2t}.\]
 
+Therefore, 
+\[ u x =\int uf + C  = \int t^2 e^{2t} e^{-2t} + c = \frac{1}{3} t^3 + C \Rightarrow x = e^{2t} \left( \frac{1}{3} t^3 + C \right)\]
 
 
 
