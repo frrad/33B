@@ -10,6 +10,9 @@
 \newtheorem{ex}{Example}
 
 \newcommand{\type}[1]{\begin{center} \emph{\textbf{#1}} \end{center}}
+\newcommand{\exs}{\subsubsection*{Examples}}
+
+
 
 \begin{document}
 
@@ -116,7 +119,7 @@ solution $x = 3t$ exists, and satisfies the given differential equation for all 
 Given a first order ODE in normal form $y' = f(y,t)$ we can draw a vector field describing solutions
 by drawing small lines of slope $f(y,t)$ at some collection of points $(y,t)$.
 
-\subsubsection*{Examples}
+\exs
 
 \type{Check}
 \begin{ex}[Exercise 2.1.3] Check that $y' = -ty$ is solved by $y = C e ^{-(1/2) t^2}$\end{ex}
@@ -171,7 +174,7 @@ Just solve for $y'$:
 
 \subsection{Section 2 - Separation of Variables}
 
-\subsubsection*{Examples}
+\exs
 
 \begin{ex}[2.2.5] Find the general solution for $y' = y(x+1)$. \end{ex}
 
@@ -231,7 +234,7 @@ We have two main techniques for solving these: Integrating Factor, and Variation
 \end{enumerate}
 \end{re}
 
-\subsubsection*{Examples}
+\exs
 
 \type{Variation of Parameter}
 
@@ -247,6 +250,17 @@ Now we `guess' $ y = v(t) y_{hom}$. Since $y' = v' y_{hom} + v y'_{hom} = v' e^{
 \[v' e^{2t} + 2  v e^{2t} - 2(v e^{2t}) = t^2 e^{2t} \Rightarrow v' = t^2 \Rightarrow v = \frac{1}{3} t^3 + C\]
 Therefore, $y = e^{2t} \left( \frac{1}{3} t^3 + C \right)$.
 
+\begin{ex}\label{vopint} Solve  $y' + y / t = 3 \cos{(2t)}$ by variation of parameter.\end{ex}
+
+First solve $y_{hom}  + y_{hom} / t = 0$
+\begin{align*} \int \frac{1}{y} dy &= - \int \frac{1}{t} dt \\ y_{hom} &= C / t\end{align*}
+So put $y = v(t) / t$. Compute $y ' = v' y + v y' = v' / t - v / t^2$. Substituting back in to original equation gives us:
+\[v' / t - v / t^2 + v / t^2 = 3 \cos{(2t)} \Rightarrow v' = 3t \cos{(2t)}\]
+We can compute $\int t \cos{(2t)}$ by parts. Taking $u = t dv = \cos 2t, du = 1, v = 1/2 \sin 2t$ gives us
+\[\int t \cos 2 t = \frac{1}{2} t \sin 2t  - \frac{1}{2} \int \sin 2t= \frac{t}{2}  \sin 2t  + \frac{1}{4}\cos{(2t)}.\]
+Thus, $v =  \frac{3 t}{2}  \sin 2t  + \frac{3}{4}\cos{(2t)}+ C $ and the answer is
+\[y = \frac{3 }{2}  \sin 2t  + \frac{3}{4t }\cos{(2t)}+ C /t  \]
+
 \type{Integrating Factor}
 
 \begin{ex} Solve $y' -2 y = t^2 e^{2 t  }$ by integrating factor.\end{ex}
@@ -257,16 +271,46 @@ Since this is already in the `right' form, we can immediately compute the integr
 Therefore, 
 \[ u x =\int uf + C  = \int t^2 e^{2t} e^{-2t} + c = \frac{1}{3} t^3 + C \Rightarrow x = e^{2t} \left( \frac{1}{3} t^3 + C \right)\]
 
+\begin{ex}Solve  $y' + y / t = 3 \cos{(2t)}$ by integrating factor.\end{ex}
+
+Compute the integrating factor $a = e^{\int 1/ t\ dt } = t$ and then write
+\begin{align*} u x &= \int u f + C \\ t x &=  \int 3t \cos{(2t)} + C\end{align*} 
+integrating by parts as in example \ref{vopint} gives us
+\[x = \frac{3 }{2}  \sin 2t  + \frac{3}{4t }\cos{(2t)}+ \frac{C}{t}  \]
 
 
 
+\subsection{Section 5 - Mixing Problems}
+
+Mixing problems are a class of examples of differential equations involving mixing liquids. We assume `perfect mixing.' The most important equation is
+\begin{align}\label{mixing} \frac{dx}{dt} = \mbox{Rate In} - \mbox{Rate Out} \end{align}
+It's often helpful to look at the units and use `dimensional analysis' as sanity check.
+
+\exs
 
 
+\begin{ex}
+A 50-gallon tank initially contains 20 gallons of pure water. Salt water solution with concentration of 1/2 lb/gal is added at a rate of 4 gal/min. A drain allows salt water to leave at 2 gal/min. How much salt is in the tank when it fills?
+\end{ex}
 
+Use equation \ref{mixing} (note: units should be lb/gal):
+\[\frac{dx}{dt} = \mbox{Rate In} - \mbox{Rate Out}\]
 
+First Rate in:
+\[RI = \frac{1}{2} \frac{lb}{gal} \cdot 4 \frac{gal}{min} = 2 \frac{lb}{min}\]
 
+For rate out we have:
+\[RO = 2 \frac{gal}{min } \cdot \frac{x(t)}{v(t)} \frac{lb}{gal}\]
+where $v(t) = 20 + 2t$ gives the volume of water in the tank as a function of time.
 
+All together we have
+\[\frac{dx}{dt} = 2 - \frac{x}{10 + t } \Leftrightarrow x' + \frac{1}{10 + t} x = 2\]
+We can solve by integrating factor:
+\[u = e^{\int \frac{1}{10 + t } dt } = 10 + t\]
+\[(10 + t ) x = 2 \int (10 + t ) dt + C \Rightarrow x = \frac{t^2 + 20 t + C}{t + 10}\]
 
-
+Using initial value $x(0) = 0$ (since we started with pure water) we get $C = 0$, and 
+\[  x =   \frac{t(t  + 20)  }{t + 10}.\]
+To find when the tank fills solve $50 = v(t) = 20  + 2 t  \Rightarrow t =15$. Substituting gives us $x(15) = 21$.
 
 \end{document}
