@@ -313,4 +313,112 @@ Using initial value $x(0) = 0$ (since we started with pure water) we get $C = 0$
 \[  x =   \frac{t(t  + 20)  }{t + 10}.\]
 To find when the tank fills solve $50 = v(t) = 20  + 2 t  \Rightarrow t =15$. Substituting gives us $x(15) = 21$.
 
+
+
+
+\subsection{Section 6 - Exact Differential Equations}
+
+
+Consider a differential equation 
+\[P dx + Q dy = 0\]
+\begin{defn}[Exact]
+We call such a differential equation \emph{exact} if 
+\[\frac{\partial P }{\partial y} = \frac{\partial Q }{\partial x}.\]
+\end{defn}
+Given an exact differential equation there exists some $\Psi(x,y)$ with 
+\[\frac{\partial \Psi}{\partial y} = Q, \frac{\partial \Psi}{\partial x} = P. \] 
+Solutions to the ODE are then given implicity by $\Psi = c$.
+
+Sometimes we're given an eqution which is not exact, but which can be transformed into an exact equation by multiplying by an integrating factor. 
+There are a lot of poitential choices of integrating factor, and in general finding an integrating factor is as hard as solving the original equation. 
+However, we have formulas for finding integrating factors which depend on only one variable.
+
+\begin{re}[Integrating factor a funciton of $x$]
+Compute
+\[h = \frac{1}{Q} \left( \frac{\partial P }{ \partial y} - \frac{\partial Q}{ \partial x}\right).\]
+If $h$ is a function of x alone then $\mu = e^{\int h dx}$ is an integrating factor.
+\end{re}
+
+\begin{re}[Integrating factor a funciton of $y$]
+Compute
+\[g = \frac{1}{P} \left( \frac{\partial P }{ \partial y} - \frac{\partial Q}{ \partial x}\right).\]
+If $g$ is a function of x alone then $\mu = e^{-\int g dy}$ is an integrating factor.
+\end{re}
+
+ADD HOMOGENEOUS HERE!
+
+\exs
+
+\begin{ex} Is  the equation 
+\[(y \cos x + 2 x e^y ) + ( \sin x + x^2 e^y -1) y' = 0 \]
+exact? If so, solve.
+\end{ex}
+
+First we verify 
+\[\frac{\partial P }{\partial y} = \cos x + 2x e^y =\frac{\partial Q }{\partial x},\]
+so the equation is exact.
+
+Now, we need to find a $\Psi$ with 
+\[\frac{\partial \Psi}{\partial y} = Q,\quad \frac{\partial \Psi}{\partial x} = P. \] 
+
+Thus integrate
+\begin{align*}
+\int \partial \Psi &= \int Q \partial y \\ 
+\Psi &=  \int \sin x + x^2 e^y - 1 \partial y\\
+&= y \sin x + x^2 e^y - y + h(x)
+\end{align*}
+for some unknown function $h$ of $x$. Of course, we can find $x$ by using the other equality:
+\[\frac{\partial \Psi}{\partial x } = y \cos x + 2 x e^y + h'(x) =y \cos x + 2 x e^y = P .\]
+So, $h'(x) = 0$ and $h(x) = C$ is a constant. Our solutions are therefore given implicity by 
+\[ y \sin x + x^2 e^y - y = C.\]
+
+\begin{ex} Solve the exact equation $(2x  + 3) + (2 y -2 ) y' = 0$. \end{ex}
+$x^2 + 3x + y^2 - 2y = c$
+
+\begin{ex} Solve the exact equation $(3x^2 - 2xy + 2)dx + (6y^2-x^2+3)dy =0$. \end{ex}
+$x^3 - x^2 y + 2 x + 2 y ^3 + 3y = C $
+
+\begin{ex} Is the following equation exact? $(x \log y + xy)dx + (y \log x + x y )dy =0$. \end{ex}
+no
+
+
+\begin{ex}Find $b$ such that the following equation is exact, then solve. $(x y ^2 + b x^2 y )dx + (x + y)x^2 dy = 0$ \end{ex}
+
+$b = 3$ and $x^2 y ^2 + 2 x^3 y = C$
+
+\type{Integrating Factor}
+
+\begin{ex} Show that the following equation is not exact then solve using the integrating factor $\mu = 1 /xy^3$ 
+\[x^2y^3 + x(1 + y^2) y' = 0 \]
+\end{ex}
+
+$x^2 + 2 \log |y | - y^{-2} = C $ and $y = 0$
+
+\begin{ex}Find an integrating factor, and solve.
+\[(3x^2 y + 2 x y + y^3)dx + (x^2 + y^2) dy =0\]
+\end{ex}
+
+$\mu = e^{3x}$ solution:$C=e^{3x}(3x^2 y + y^3)$
+
+
+\begin{ex}Find an integrating factor, and solve.
+\[y' = e^{2x} +y -1\]
+\end{ex}
+
+$\mu = e^{-x} $ and $y = C e^x + 1 + e ^{2x}$
+
+\begin{ex}Solve using the integrating factor $\mu = e^{2x} / y$
+\[y dx + (2 x y - e^{-2y}) dy = 0\]
+\end{ex}
+
+$y=0$ and $x e^{2 y} - \log y = C$
+
+\type{Homogeneous}
+ADD HOMOGENEOUS EXAMPLES
+
+\subsection{Section 7 - Existence and Uniqueness of Solutions}
+
+
+\exs
+
 \end{document}
