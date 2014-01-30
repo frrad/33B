@@ -48,4 +48,21 @@ point = Graphics[{PointSize[Large], Point[{t0, x0}]}];
 picture = Show[stream, solplot, fence1, fence2, point];
 Export["figures/2.7.second.pdf", picture]
 
+
+f[x_, t_] := Sqrt[x^2 + 1] Log[t + 1] (x + Cos[t]) + Sin[t];
+border1[t_] := -Cos[t];
+from = -1; to = 2 Pi;
+to2 = 1.75;
+light = -2; height = 6;
+t0 = 0; x0 = 0;
+ode = {x'[t] == f[x[t], t], x[t0] == x0};
+sol = NDSolve[ode, x, {t, from, to2}];
+stream = StreamPlot[{1, f[x, t]}, {t, from, to}, {x, light, height}];
+solplot = Plot[x[t] /. sol, {t, from, to2}, PlotStyle -> Thick];
+fence1 = Plot[border1[t], {t, from, to}, 
+   PlotStyle -> Directive[Thick, Red]];
+point = Graphics[{PointSize[Large], Point[{t0, x0}]}];
+picture = Show[stream, fence1, solplot, point];
+Export["figures/2.7.extra.pdf", picture]
+
 Quit[]

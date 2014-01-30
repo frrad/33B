@@ -495,6 +495,22 @@ So now we just verify
 \item $f = x - t^2 + 2t$ and $\frac{\partial f}{\partial x} =1 $ are both continuous when $x = t^2$ or  (in fact, they're continuous everywhere). Therefore, the uniqueness theorem applies.
 \end{enumerate}
 
+\begin{ex}Consider the initial value problem
+\[y' = \sqrt{y^2 + 1 } \ln(t+1) (y + \cos t ) + \sin t, \quad y(0) = 0\]
+\begin{enumerate}
+\item Do the theorems about the existence and uniqueness of solutions apply to this initial value problem? Explain.
+\item Suppose $y(t)$ is a solution of the above initial value problem. Is it possible that $y(\pi) =0$? Why or why not? \\ (Hint: Note that $y' - \sin t = ( y + \cos t )'$.)
+\end{enumerate}
+\end{ex}
+\begin{samepage}
+\begin{enumerate}
+\item Since the function is smooth (for $t > -1$), both uniqueness and existence theorems apply.
+\item Using the hint, note that $y = -\cos t$ is a solution. Thus, by uniqueness theorem, it bounds $y$ below, and we can't have $y(\pi) = 0$.
+\end{enumerate}
+
+
+\[\includegraphics[scale=.7]{figures/{2.7.extra}.pdf}\]
+\end{samepage}
 
 
 \end{document}
