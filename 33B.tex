@@ -452,7 +452,7 @@ The general solution is (Integrating Factor)
 \[y = t \sin t + C t \]
 
 
-\begin{ex}Show that $y(t) =0$ and $y(t) t^3$ both solve $y' = 3 y^{2/3}$ with $y(0) =0$. Why doesn't this violate the uniqueness theorem?\end{ex}
+\begin{ex}Show that $y(t) =0$ and $y(t) = t^3$ both solve $y' = 3 y^{2/3}$ with $y(0) =0$. Why doesn't this violate the uniqueness theorem?\end{ex}
 
 
 \type{`Bounding Solutions'}
@@ -511,6 +511,27 @@ So now we just verify
 
 \[\includegraphics[scale=.7]{figures/{2.7.extra}.pdf}\]
 \end{samepage}
+
+
+
+\subsection{Section 7 - Autonomous Equations}
+
+\begin{defn}[Autonomous] A differential equation of the form $$x' = f(x)$$ is called \emph{autonomous}.\end{defn}
+
+\begin{defn}[Equilibrium] A point $x_0$ with $f(x_0)$ is called an \emph{equilibrium point}. The solution $f(t) = x_0$ is called an \emph{equilibrium solution}. \end{defn}
+
+\begin{defn}[Stable]An equilibrium point is called \emph{asymptotically stable} if solutions starting nearby stay near as $t \to infty$. More formally, if for every $\epsilon > 0$ ther eexists $\delta > 0$ such that solutions starting within $\delta$ of $x_0$ remain within $\epsilon$ for all $t$.\end{defn}
+
+
+\begin{defn}[Unstable]An equilibrium point is called \emph{asymptotically unstable} if it is not stable.\end{defn}
+
+\begin{defn}[Phase Line]A \emph{phase line} is just a plot of $f$ as a function of $x$.\end{defn}
+
+\exs
+
+\begin{ex}[Exercise 2.9.19]Plot the vector field, and phase line for $y' = 9 y - y^3$. Identify the equilibrium points and classify them:\end{ex}
+\[\includegraphics[scale=.7]{figures/{2.9.19a}.pdf}\]
+\[\includegraphics[scale=.7]{figures/{2.9.19b}.pdf}\]
 
 
 \end{document}

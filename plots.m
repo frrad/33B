@@ -65,4 +65,10 @@ point = Graphics[{PointSize[Large], Point[{t0, x0}]}];
 picture = Show[stream, fence1, solplot, point];
 Export["figures/2.7.extra.pdf", picture]
 
+f[y_, t_] := 9 y - y^3
+vf = StreamPlot[{1, f[y, t]}, {t, -5, 5}, {y, -5, 5}];
+pl = Plot[f[y, 1], {y, -5, 5}];
+Export["figures/2.9.19a.pdf",vf]
+Export["figures/2.9.19b.pdf",pl]
+
 Quit[]
