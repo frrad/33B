@@ -538,7 +538,6 @@ So now we just verify
 \subsection{Section ?? - Harmonic Motion}
 
 \exs
-
 \begin{ex}Suppose a particle of mass 1 is attached to a spring with spring constant 36, in a medium which imparts damping coefficient 2. Initial conditions $y(0) = 0$ and $y'(0) = \sqrt{35}$.  After what time is the particle guaranteed to be at most 1\% of it's maximum possible displacement?\end{ex}
 
 Recall the formula
@@ -551,9 +550,10 @@ Therefore, the general solution is just
 for some constants $C,D$. Since we have initial conditions $y(0) = 0$ and $y'(0) = \sqrt{35}$ we solve to find $D = 0$, $C = 1$. 
 
 Now let's transform equation using the usual formulae
-\[y = A e^{\alpha t}  \cos{(\omega t + \phi)} \quad A^2 = 0^2 + 1^2 , \phi = \tan^{-1}(1/0)\]
+\[y = A e^{\alpha t}  \cos{(\omega t - \phi)} \quad A^2 = 0^2 + 1^2 , 
+\phi = \tan^{-1}(1/0)\]
 of course, this value of $\phi$ doesn't really make sense, but in the limit, we have $\phi = \pi/ 2$. We have now
-\[ y =  e^{ -t} \cos{\sqrt{35} t - \pi /2}\]
+\[ y =  e^{ -t} \cos{(\sqrt{35} t - \pi /2)}\]
 so we see that the max possible displacement is 1, and if $t > - \ln .01 \sim 4.605170$ we must have $y$ at most $.01$.
 
 
