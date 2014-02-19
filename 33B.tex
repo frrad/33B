@@ -518,7 +518,7 @@ So now we just verify
 
 \begin{defn}[Autonomous] A differential equation of the form $$x' = f(x)$$ is called \emph{autonomous}.\end{defn}
 
-\begin{defn}[Equilibrium] A point $x_0$ with $f(x_0)$ is called an \emph{equilibrium point}. The solution $f(t) = x_0$ is called an \emph{equilibrium solution}. \end{defn}
+\begin{defn}[Equilibrium] A point $x_0$ with $f(x_0)$ is called an \emph{equilibrium point}. The solution $f(t) = x_0$ is called an \emph{equilibrium solution}. \end{defn}	
 
 \begin{defn}[Stable]An equilibrium point is called \emph{asymptotically stable} if solutions starting nearby stay near as $t \to infty$. More formally, if for every $\epsilon > 0$ ther eexists $\delta > 0$ such that solutions starting within $\delta$ of $x_0$ remain within $\epsilon$ for all $t$.\end{defn}
 
@@ -532,6 +532,29 @@ So now we just verify
 \begin{ex}[Exercise 2.9.19]Plot the vector field, and phase line for $y' = 9 y - y^3$. Identify the equilibrium points and classify them:\end{ex}
 \[\includegraphics[scale=.7]{figures/{2.9.19a}.pdf}\]
 \[\includegraphics[scale=.7]{figures/{2.9.19b}.pdf}\]
+
+\section{Chapter 4}
+
+\subsection{Section ?? - Harmonic Motion}
+
+\exs
+
+\begin{ex}Suppose a particle of mass 1 is attached to a spring with spring constant 36, in a medium which imparts damping coefficient 2. Initial conditions $y(0) = 0$ and $y'(0) = \sqrt{35}$.  After what time is the particle guaranteed to be at most 1\% of it's maximum possible displacement?\end{ex}
+
+Recall the formula
+\[ m y'' + \mu y' + k y = f(t) \Leftrightarrow y'' + 2 y' + 36 y =0\]
+So we can solve the characteristic equation:
+\[\lambda^2 + 2 \lambda + 36 = 0 \quad \lambda = \frac{-2 \pm \sqrt{2^2 - 4 \cdot 36}}{2} = -1 \pm  i \sqrt{35}\]
+
+Therefore, the general solution is just
+\[y = e^{-t} ( C \sin{(t\sqrt{35})} + D \cos{(t\sqrt{35})} ).\]
+for some constants $C,D$. Since we have initial conditions $y(0) = 0$ and $y'(0) = \sqrt{35}$ we solve to find $D = 0$, $C = 1$. 
+
+Now let's transform equation using the usual formulae
+\[y = A e^{\alpha t}  \cos{(\omega t + \phi)} \quad A^2 = 0^2 + 1^2 , \phi = \tan^{-1}(1/0)\]
+of course, this value of $\phi$ doesn't really make sense, but in the limit, we have $\phi = \pi/ 2$. We have now
+\[ y =  e^{ -t} \cos{\sqrt{35} t - \pi /2}\]
+so we see that the max possible displacement is 1, and if $t > - \ln .01 \sim 4.605170$ we must have $y$ at most $.01$.
 
 
 \end{document}
